@@ -1,0 +1,39 @@
+{
+  "name": "Faster",
+  "version": "1.0",
+  "description": "快捷键代替鼠标，提高标注效率",
+  "manifest_version": 2,
+
+  "browser_action": {
+        "default_popup": "popup/popup.html"
+  },
+
+  "icons": {
+    "16": "images/icon16.png",
+    "32": "images/icon32.png",
+    "48": "images/icon48.png",
+    "128": "images/icon128.png"
+  },
+
+  "background": {
+  	"scripts":["js/jquery-3.3.1.min.js","js/background.js"],
+  	"run_at": "document_start",
+  	"persistent":false
+  },
+
+  // "permissions":["contextMenus", "activeTab", "storage","http://*/*","https://*/*"],
+  "permissions":["http://*/*","https://*/*"],
+
+  "content_scripts": [
+        {
+            "matches": ["http://*/*", "https://*/*", "file://*/*"],
+            "js": [
+                "js/jquery-3.3.1.min.js",       
+                "js/myFunction.js",
+                "js/main.js"
+            ],
+            "run_at": "document_start"
+        }
+    ]
+
+}
